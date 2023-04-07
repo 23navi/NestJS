@@ -1,0 +1,8 @@
+### post route check
+
+POST http://localhost:3002/messages
+Content-Type: application/json
+
+{
+    "content":"Naviiii"
+}

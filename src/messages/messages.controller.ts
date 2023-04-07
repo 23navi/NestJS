@@ -6,11 +6,14 @@ import {CreateMessageDto} from "./dtos/create-message.dto";
 export class MessagesController{
     @Get('/')
     listMessages(){
-       return "";
+       return "Heloo";
     }
     @Post("/")
     createMessage(@Body() body: CreateMessageDto){
+      // console.log(body instanceof CreateMessageDto)  // giving false?? yyyy 
+      console.log(body);
       return ""
     }
+    
    }
    
