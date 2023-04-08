@@ -15,8 +15,9 @@ export class MessagesController {
   @Post('/')
   createMessage(@Body() body: CreateMessageDto) {
     return this.messageService.create(body.content);
-  }@Get()
+  }@Get("/:id")
   getMessage(@Param('id') id:string){
+   
     return this.messageService.findOne(id);
   }
 
