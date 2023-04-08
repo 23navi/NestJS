@@ -44,7 +44,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], MessagesController.prototype, "createMessage", null);
 __decorate([
-    (0, common_1.Get)(),
+    (0, common_1.Get)("/:id"),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

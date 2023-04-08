@@ -3,6 +3,8 @@ export declare class MessagesService {
     messagesRepo: MessagesRepository;
     constructor();
     findOne(id: string): Promise<any>;
-    findAll(): Promise<any>;
-    create(message: string): Promise<number>;
+    findAll(): Promise<string>;
+    create(message: string): Promise<{
+        id: number;
+    }>;
 }
