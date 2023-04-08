@@ -1,6 +1,7 @@
 import { MessagesRepository } from "./messages.repository";
 
 export class MessagesService{
+    // Bad approach.. We are creating an internal dependency to our MessagesService
     constructor(public messagesRepo:MessagesRepository){
         this.messagesRepo=new MessagesRepository();
     }
