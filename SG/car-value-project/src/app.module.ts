@@ -4,13 +4,15 @@ import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { ReportsModule } from './reports/reports.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import {User} from "./users/user.entity";
+
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'sqlite',
       database: 'carProject',
-      entities: [],
+      entities: [User],
       synchronize: true,
     }),
     UsersModule,ReportsModule
