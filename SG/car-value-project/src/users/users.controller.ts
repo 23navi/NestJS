@@ -1,5 +1,5 @@
 import { Controller, Post, Body,Get,Patch,Delete, UseInterceptors, ClassSerializerInterceptor, Param} from '@nestjs/common';
-import { CreateUserDto } from './create-user.dto';
+import { CreateUserDto } from './dtos/create-user.dto';
 import { UsersService } from './users.service';
 import { SerializeInterceptor } from 'src/interceptors/serialize.interceptor';
 
