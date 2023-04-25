@@ -10,11 +10,9 @@ export class UsersController {
         return this.userService.create({...body});
     }
 
-    @UseInterceptors(ClassSerializerInterceptor)
+    // @UseInterceptors(ClassSerializerInterceptor)
     @Get("/:id")
     async findUser(@Param ("id") id:number){
         return this.userService.findOne(id);
-    }
-  
-    
+    } 
 }

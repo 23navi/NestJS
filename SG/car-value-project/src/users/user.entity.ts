@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { Exclude } from 'class-transformer';
+// import { Exclude } from 'class-transformer';
 
 @Entity()
 export class User {
@@ -15,7 +15,7 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Exclude()
+  // @Exclude()
   @Column()
   password: string;
 
