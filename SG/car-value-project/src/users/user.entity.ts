@@ -7,14 +7,22 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+import { Exclude } from 'class-transformer';
+
 @Entity()
 export class User {
+
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Exclude()
   @Column()
   password: string;
+
   @Column()
   email: string;
+
+
   @AfterInsert()
   logInsert() {
     console.log(`${this.id} was inserted`);
