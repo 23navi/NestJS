@@ -4,6 +4,10 @@ import { UsersService } from './users.service';
 import { SerializeInterceptor } from 'src/interceptors/serialize.interceptor';
 import { UserDto } from './dtos/user.dto';
 
+import {Serialize} from '../interceptors/serialize.interceptor';
+
+
+
 
 
 @Controller('/auth')
@@ -14,7 +18,8 @@ export class UsersController {
         return this.userService.create({...body});
     }
 
-    @UseInterceptors(new SerializeInterceptor(UserDto))
+    @Serialize(UserDto)
+    // @UseInterceptors(new SerializeInterceptor(UserDto))
     // @UseInterceptors(ClassSerializerInterceptor)
     @Get("/:id")
     async findUser(@Param ("id") id:number){
