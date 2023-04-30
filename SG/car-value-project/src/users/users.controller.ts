@@ -32,6 +32,13 @@ export class UsersController {
   }
 
   @Serialize(UserDto)
+  @Post('/signin')
+  signin(@Body() body: CreateUserDto) { // Note : we are using CreateUserDto bec it satify our need.. we can create a signup user dto... for more clearity 
+    const{email,password}= body;
+    return this.authService.signin(email,password);
+  } 
+
+  @Serialize(UserDto)
   // @UseInterceptors(new SerializeInterceptor(UserDto))
   // @UseInterceptors(ClassSerializerInterceptor)
   @Get('/:id')
