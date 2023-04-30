@@ -26,6 +26,12 @@ export class UsersController {
   ) {}
 
 
+  @Get("/whoami")
+   async whoAmI(@Session() session: any){
+    return this.userService.findOne(session.userId);
+   }
+
+
 
   @Serialize(UserDto)
   @Post('/signup')
