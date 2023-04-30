@@ -7,6 +7,7 @@ import {
   Delete,
   UseInterceptors,
   ClassSerializerInterceptor,
+  Session,
   Param,
 } from '@nestjs/common';
 import { CreateUserDto } from './dtos/create-user.dto';
@@ -24,18 +25,24 @@ export class UsersController {
     private authService: AuthService,
   ) {}
 
+
+
   @Serialize(UserDto)
   @Post('/signup')
-  createUser(@Body() body: CreateUserDto) {
+  async createUser(@Body() body: CreateUserDto, @Session() session: any) {
     const {email, password}= body
-    return this.authService.signup(email,password);
+    const user = await this.authService.signup(email,password);
+    session.userId = user.id;
+    return user;
   }
 
   @Serialize(UserDto)
   @Post('/signin')
-  signin(@Body() body: CreateUserDto) { // Note : we are using CreateUserDto bec it satify our need.. we can create a signup user dto... for more clearity 
+  async signin(@Body() body: CreateUserDto, @Session() session: any) { // Note : we are using CreateUserDto bec it satify our need.. we can create a signup user dto... for more clearity 
     const{email,password}= body;
-    return this.authService.signin(email,password);
+    const user= await this.authService.signin(email,password);
+    session.userId = user.id;
+    return user;
   } 
 
   @Serialize(UserDto)
