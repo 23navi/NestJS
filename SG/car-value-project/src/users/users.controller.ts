@@ -23,7 +23,10 @@ import { Serialize } from '../interceptors/serialize.interceptor';
 import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 
+import { CurrentUserInterceptor } from './interceptors/current-user.interceptor';
+
 @Controller('/auth')
+// @UseInterceptors(CurrentUserInterceptor)
 export class UsersController {
   constructor(
     private userService: UsersService,
