@@ -1,0 +1,22 @@
+### signup route
+
+POST http://localhost:3002/reports HTTP/1.1
+Content-Type: application/json
+
+{
+  "price":343423,
+  "make":"Audi",
+  "model":"A3",
+  "year":2023,
+  "lng":23.64,
+  "lat":23.534,
+  "mileage":3423
+}
+
+
+### List all reports 
+
+GET http://localhost:3002/reports HTTP/1.1
+Content-Type: application/json
+
+{}

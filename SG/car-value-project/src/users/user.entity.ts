@@ -5,13 +5,15 @@ import {
   Column,
   Entity,
   PrimaryGeneratedColumn,
+  OneToMany,
 } from 'typeorm';
+
+import { Report } from '../reports/report.entity';
 
 // import { Exclude } from 'class-transformer';
 
 @Entity()
 export class User {
-
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -21,7 +23,6 @@ export class User {
 
   @Column()
   email: string;
-
 
   @AfterInsert()
   logInsert() {
@@ -35,4 +36,7 @@ export class User {
   logRemove() {
     console.log(`${this.id} was removed`);
   }
+
+  @OneToMany(() => Report, (report) => report.user)
+  reports: Report[];
 }
