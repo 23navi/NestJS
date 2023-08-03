@@ -1,4 +1,4 @@
-import { Controller, Body, Post, Get } from '@nestjs/common';
+import { Controller, Body, Post, Get, Patch, Param } from '@nestjs/common';
 import { ReportsService } from './reports.service';
 import { CreateReportDto } from './dtos/create-report.dto';
 import { AuthGuard } from '../guards/auth.guard';
@@ -8,6 +8,7 @@ import { User } from '../users/user.entity';
 
 import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { ReturnReportDto } from './dtos/return-report.dto';
+import { UpdateReportDto } from './dtos/update-report.dto';
 
 @Controller('reports')
 export class ReportsController {
@@ -23,10 +24,13 @@ export class ReportsController {
   //   return this.reportsService.findOne(+id);
   // }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateReportDto: UpdateReportDto) {
-  //   return this.reportsService.update(+id, updateReportDto);
-  // }
+  @Patch(':id')
+  approveReport(
+    @Param('id') id: string,
+    @Body() updateReport: UpdateReportDto,
+  ) {
+    return this.reportsService.changeApprove(+id, updateReport.approved);
+  }
 
   // @Delete(':id')
   // remove(@Param('id') id: string) {
@@ -36,7 +40,10 @@ export class ReportsController {
   @Post()
   @Serialize(ReturnReportDto)
   @UseGuards(AuthGuard)
-  create(@Body() createReport: CreateReportDto, @CurrentUser() user: User) {
+  createReport(
+    @Body() createReport: CreateReportDto,
+    @CurrentUser() user: User,
+  ) {
     return this.reportsService.create(createReport, user);
   }
 
