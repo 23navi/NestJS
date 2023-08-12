@@ -40,7 +40,8 @@ export class UsersController {
 
   @Get('/whoami')
   @UseGuards(AuthGuard)
-  async whoAmI(@CurrentUser() user: any) {
+  async whoAmI(@CurrentUser() user: User) {
+    console.log(user);
     return user;
   }
 

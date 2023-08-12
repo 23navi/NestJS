@@ -24,6 +24,9 @@ export class User {
   @Column()
   email: string;
 
+  @Column({ default: true })
+  admin: boolean;
+
   @AfterInsert()
   logInsert() {
     console.log(`${this.id} was inserted`);
