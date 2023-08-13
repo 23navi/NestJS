@@ -28,3 +28,10 @@ PATCH http://localhost:3002/reports/2 HTTP/1.1
 Content-Type: application/json
 
 {"approved":true}
+
+
+
+### Get estimation for the car
+
+GET http://localhost:3002/reports?milage=18&lat=45&lng=23 HTTP/1.1
+Content-Type: application/json
