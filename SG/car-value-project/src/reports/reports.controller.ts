@@ -41,11 +41,11 @@ export class ReportsController {
 
   @Patch(':id')
   approveReport(
-    @Param('id') id: UpdateParamDto,
+    @Param() params: UpdateParamDto,
     @Body() updateReport: UpdateReportDto,
   ) {
-    console.log('This is running', typeof id);
-    return this.reportsService.changeApprove(+id, updateReport.approved);
+    console.log('This is running', typeof params);
+    return this.reportsService.changeApprove(params.id, updateReport.approved);
   }
 
   // @Delete(':id')
