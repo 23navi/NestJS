@@ -10,6 +10,8 @@ import { Serialize } from 'src/interceptors/serialize.interceptor';
 import { ReturnReportDto } from './dtos/return-report.dto';
 import { UpdateReportDto } from './dtos/update-report.dto';
 
+import { UpdateParamDto } from './dtos/update-param.dto';
+
 @Controller('reports')
 export class ReportsController {
   constructor(private readonly reportsService: ReportsService) {}
@@ -26,9 +28,10 @@ export class ReportsController {
 
   @Patch(':id')
   approveReport(
-    @Param('id') id: string,
+    @Param('id') id: UpdateParamDto,
     @Body() updateReport: UpdateReportDto,
   ) {
+    console.log('This is running', typeof id);
     return this.reportsService.changeApprove(+id, updateReport.approved);
   }
 
