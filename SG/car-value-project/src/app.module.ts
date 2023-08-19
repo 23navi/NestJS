@@ -10,12 +10,8 @@ import {Report} from "./reports/report.entity";
 
 @Module({
   imports: [
-    TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'carProject.db',
-      entities: [User,Report],
-      synchronize: true,
-    }),
+    TypeOrmModule.forRoot(),
+   
     UsersModule,ReportsModule
   ],
 
