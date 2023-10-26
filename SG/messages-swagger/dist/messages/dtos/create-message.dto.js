@@ -10,11 +10,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateMessageDto = void 0;
+const swagger_1 = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class CreateMessageDto {
 }
 __decorate([
     (0, class_validator_1.IsString)(),
+    (0, swagger_1.ApiProperty)({
+        description: 'Message content',
+        example: 'Hello World!',
+    }),
     __metadata("design:type", String)
 ], CreateMessageDto.prototype, "content", void 0);
 exports.CreateMessageDto = CreateMessageDto;

@@ -1,6 +1,11 @@
-import {IsString} from "class-validator"
+import { ApiProperty } from '@nestjs/swagger';
+import { IsString } from 'class-validator';
 
-export class CreateMessageDto{
-    @IsString()
-    content:string
+export class CreateMessageDto {
+  @IsString()
+  @ApiProperty({
+    description: 'Message content',
+    example: 'Hello World!',
+  })
+  content: string;
 }
