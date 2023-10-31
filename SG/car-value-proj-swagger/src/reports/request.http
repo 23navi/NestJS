@@ -1,0 +1,37 @@
+### signup route
+
+POST http://localhost:3002/reports HTTP/1.1
+Content-Type: application/json
+
+{
+  "price":343423,
+  "make":"Audi",
+  "model":"A3",
+  "year":2023,
+  "lng":23.64,
+  "lat":23.534,
+  "mileage":3423
+}
+
+
+### List all reports 
+
+GET http://localhost:3002/reports HTTP/1.1
+Content-Type: application/json
+
+{}
+
+
+### Approve the report by Id
+
+PATCH http://localhost:3002/reports/2 HTTP/1.1
+Content-Type: application/json
+
+{"approved":true}
+
+
+
+### Get estimation for the car
+
+GET http://localhost:3002/reports?milage=18&lat=45&lng=23 HTTP/1.1
+Content-Type: application/json
